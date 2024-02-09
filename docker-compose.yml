@@ -1,0 +1,8 @@
+version: '1'
+services:
+  proxy_api:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - GENHEALTH_BASE_API_URL=${GENHEALTH_BASE_API_URL}

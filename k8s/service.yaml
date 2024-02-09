@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy-api
+spec:
+  type: LoadBalancer  # utilize load balancer for scaling and load distribution
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: proxy-api

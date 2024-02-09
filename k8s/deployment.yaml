@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy-api
+spec:
+  replicas: 2  # Adjust based on scaling
+  selector:
+    matchLabels:
+      app: proxy-api
+  template:
+    metadata:
+      labels:
+        app: proxy-api
+    spec:
+      containers:
+      - name: proxy-api
+        image: DOCKER-IMAGE:latest  # Replace with actual image id 
+        ports:
+        - containerPort: 80
+        env:
+        - name: GENHEALTH_BASE_API_URL
+          value: "https://api.genhealth.ai"
