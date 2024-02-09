@@ -24,15 +24,6 @@ async def global_exception_handler(request: Request, exc: Exception):
         content={"message": "An internal server error occurred"},
     )
 
-# Example of a specific exception handler, for HTTPException
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request: Request, exc: HTTPException):
-    logging.warning(f"HTTP exception: {exc.detail} with status {exc.status_code}")
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={"message": exc.detail},
-    )
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
